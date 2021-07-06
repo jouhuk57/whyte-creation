@@ -41,7 +41,7 @@ class AdminEditProductComponent extends Component
         $this->images= $product->images;
         $category=$product->category_id;
         $result = DB::table('categories')->select('parent_id')->where('id', $category)->first();
-        if(empty($result))
+        if($result->parent_id==NULL)
         {
             $this->category_id=$category;
         //    $this->subcategories = Category::where('parent_id', $this->category_id)->get();

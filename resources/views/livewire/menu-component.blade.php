@@ -14,17 +14,17 @@
           <div class="navbar-collapse collapse">
             <!-- Left nav -->
             <ul class="nav navbar-nav">
-              <li><a href="index.html">Home</a></li>
+              <li><a href="/">Home</a></li>
               @foreach($categories as $category)
-              <li><a href="#">{{$category->name}} <span class="caret"></span></a>
+              <li><a href="{{route('product.category',['category_id'=>$category->id])}}">{{$category->name}} <span class="caret"></span></a>
               @php
-			  $subcategory=DB::table('categories')->where('parent_id',$category->id)->get();
-			  @endphp
+			      $subcategory=DB::table('categories')->where('parent_id',$category->id)->get();
+			       @endphp
                  
                  
                 <ul class="dropdown-menu">  
                 @foreach($subcategory as $subcategory)              
-                  <li><a href="#">{{$subcategory->name}}</a></li>
+                  <li><a href="{{route('product.category',['category_id'=>$subcategory->id])}}">{{$subcategory->name}}</a></li>
                 @endforeach
                 </ul>
               </li>
